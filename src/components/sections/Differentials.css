@@ -1,0 +1,79 @@
+.differentials__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ── Item ── */
+.differentials__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--transition);
+}
+
+.differentials__item:first-child {
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ── Number ── */
+.differentials__number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-border);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 3rem;
+  transition: color var(--transition);
+}
+
+.differentials__item:hover .differentials__number {
+  color: var(--color-primary);
+}
+
+/* ── Content ── */
+.differentials__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: .4rem;
+}
+
+.differentials__desc {
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+@media (min-width: 600px) {
+  .differentials__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .differentials__item {
+    border-right: 1px solid var(--color-border-light);
+    padding: 2.25rem 2rem;
+  }
+
+  .differentials__item:nth-child(even) {
+    border-right: none;
+    padding-left: 2.5rem;
+  }
+
+  .differentials__item:nth-child(odd) {
+    border-right: 1px solid var(--color-border-light);
+  }
+
+  /* Reset top/bottom borders for grid */
+  .differentials__item:first-child,
+  .differentials__item:nth-child(2) {
+    border-top: 1px solid var(--color-border-light);
+  }
+}

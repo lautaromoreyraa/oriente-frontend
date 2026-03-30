@@ -1,0 +1,96 @@
+
+.oriental-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .oriental-decor { display: block; }
+}
+
+.oriental-decor,
+.oriental-decor * {
+  color: var(--color-primary);
+}
+
+/* ── Flores de cerezo ── */
+.oriental-decor__cherry {
+  position: absolute;
+  width: 120px;
+  pointer-events: none;
+}
+
+.oriental-decor__cherry--left {
+  left: -18px;
+  top: 8%;
+  opacity: .45;
+  transform-origin: bottom center;
+}
+
+.oriental-decor__cherry--right {
+  right: -18px;
+  top: 45%;
+  opacity: .35;
+  transform: scaleX(-1);
+  transform-origin: bottom center;
+}
+
+/* ── Grulla ── */
+.oriental-decor__crane {
+  position: absolute;
+  width: 130px;
+  pointer-events: none;
+}
+
+.oriental-decor__crane--left {
+  left: 10px;
+  top: 52%;
+  opacity: .2;
+}
+
+/* ── Bambú ── */
+.oriental-decor__bamboo {
+  position: absolute;
+  width: 90px;
+  pointer-events: none;
+}
+
+.oriental-decor__bamboo--right {
+  right: 0;
+  top: 0;
+  height: 100%;
+  opacity: .18;
+  transform-origin: bottom center;
+}
+
+/* ── Loto ── */
+.oriental-decor__lotus {
+  position: absolute;
+  width: 85px;
+  pointer-events: none;
+}
+
+.oriental-decor__lotus--left {
+  left: 8px;
+  bottom: 8%;
+  opacity: .22;
+  transform-origin: bottom center;
+}
+
+/* ── Emblema ── */
+.oriental-decor__emblem {
+  position: absolute;
+  width: 90px;
+  right: 12px;
+  top: 10%;
+  opacity: .12;
+  transform-origin: center center;
+}
+
+/* ── Versión right cherry usa scaleX(-1) ── */
+.oriental-decor__cherry--right {
+}

@@ -1,0 +1,292 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--navbar-h);
+  background-color: var(--color-bg);
+}
+
+/* ── Fondo decorativo ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__bg-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  top: -200px; right: -150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,18,33,.12) 0%, transparent 65%);
+}
+
+.hero__bg-glow-2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  bottom: -100px; left: -80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44,74,88,.06) 0%, transparent 65%);
+}
+
+.hero__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0, transparent 79px,
+    var(--color-border-light) 79px, var(--color-border-light) 80px
+  );
+  opacity: .25;
+}
+
+/* ── Layout ── */
+.hero__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .hero__content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-bottom: 3rem;
+  }
+  .hero__text   { flex: 1; max-width: 560px; }
+  .hero__visual { flex: 0 0 auto; }
+}
+
+/* ── Eyebrow ── */
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .67rem;
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+.hero__eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--color-gold);
+  opacity: .6;
+}
+
+/* ── Logo imagen ── */
+.hero__title {
+  margin-bottom: .5rem;
+  line-height: 1;
+}
+
+.hero__logo-img {
+  width: clamp(260px, 45vw, 480px);
+  height: auto;
+  display: block;
+  mix-blend-mode: screen;
+  margin-left: -8%;   /* compensa espacio transparente izquierdo del PNG */
+}
+
+:root:not([data-theme='dark']) .hero__logo-img {
+  mix-blend-mode: multiply;
+}
+
+/* ── Slogan ── */
+.hero__slogan {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.6vw, 1.55rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+.hero__slogan em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+/* ── Descripción ── */
+.hero__description {
+  font-size: .92rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 2.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-border);
+}
+
+/* ── CTAs ── */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: center;
+}
+
+/* ── Placeholder visual ── */
+.hero__visual { display: flex; justify-content: center; }
+
+.hero__image-frame {
+  position: relative;
+  width: min(300px, 78vw);
+  aspect-ratio: 3/4;
+}
+
+.hero__image-frame::before {
+  content: '';
+  position: absolute;
+  inset: -14px 14px 14px -14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  opacity: .5;
+}
+
+.hero__image-placeholder {
+  width: 100%; height: 100%;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    160deg,
+    var(--color-surface-raised) 0%,
+    var(--color-bg-alt) 100%
+  );
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__placeholder-text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .15em;
+  color: var(--color-border);
+}
+
+/* ── Scroll cue ── */
+.hero__scroll-cue {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: .4;
+  transition: opacity var(--transition);
+}
+.hero__scroll-cue:hover { opacity: .7; }
+.hero__scroll-cue span {
+  display: block;
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--color-gold), transparent);
+  animation: scroll-pulse 2.2s var(--ease) infinite;
+}
+@keyframes scroll-pulse {
+  0%   { transform: scaleY(0); transform-origin: top;    opacity: 1; }
+  50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
+  51%  { transform: scaleY(1); transform-origin: bottom;             }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ── Animaciones de entrada ── */
+.animate-item {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-enter .75s var(--ease) forwards;
+}
+.animate-item--delay-1 { animation-delay: .12s; }
+.animate-item--delay-2 { animation-delay: .26s; }
+.animate-item--delay-3 { animation-delay: .40s; }
+.animate-item--delay-4 { animation-delay: .55s; }
+
+@keyframes hero-enter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Foto real del hero (600×700px ideal) ── */
+.hero__image-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: inherit;
+  display: block;
+}
+
+/* ── Mobile optimizations ── */
+@media (max-width: 899px) {
+  .hero { min-height: auto; }
+  .hero__content {
+    padding-top: 1.5rem !important;
+    padding-bottom: 5rem !important;
+    gap: 1.25rem;
+    text-align: left;
+  }
+  .hero__eyebrow { justify-content: flex-start; }
+  .hero__title {
+    display: block;
+    margin-left: 0;
+  }
+  .hero__logo-img {
+    width: clamp(220px, 75vw, 340px);
+    margin-left: -5%;
+  }
+  .hero__slogan {
+    text-align: left;
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+    margin: 0;              /* alineado a la izquierda */
+  }
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero__actions .social-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .hero__actions .social-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  /* Imagen arriba con espacio generoso desde el navbar */
+  .hero__visual  {
+    order: -1;
+    padding-top: 2rem;      /* espacio entre navbar y la imagen */
+  }
+  .hero__image-frame {
+    width: min(240px, 72vw);
+    height: auto;
+    aspect-ratio: 4/3;      /* más ancha que alta — ocupa menos alto */
+    margin: 0 auto 1.5rem;
+  }
+  .hero__scroll-cue { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero__slogan   { font-size: 1.2rem; }
+  .hero__logo-img { max-width: 240px; }
+  .hero__content  { padding-bottom: 5rem; padding-top: 3rem; }
+}

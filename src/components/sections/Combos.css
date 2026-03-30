@@ -1,0 +1,201 @@
+.combos__intro {
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin: 1rem auto 0;
+  line-height: 1.75;
+  transition: color var(--transition-slow);
+}
+
+.combos__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 660px) {
+  .combos__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px) {
+  .combos__grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+}
+
+/* ── Card ── */
+.combos__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  will-change: transform;
+  transition:
+    transform    var(--transition),
+    box-shadow   var(--transition),
+    border-color var(--transition),
+    background-color var(--transition-theme);
+}
+.combos__card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-border);
+}
+
+/* ── Franja superior con shimmer en hover ── */
+.combos__card-stripe {
+  height: 3px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #8B6914 0%, var(--color-gold) 50%, #C9A84C 100%);
+  flex-shrink: 0;
+}
+
+/* Shimmer que corre por la franja en hover */
+.combos__card-stripe::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+  transition: none;
+}
+.combos__card:hover .combos__card-stripe::after {
+  left: 100%;
+  transition: left .6s var(--ease-out);
+}
+
+/* ── Badge ── */
+.combos__badge {
+  position: absolute;
+  top: .85rem; right: .85rem;
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .2rem .65rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #F9F2EA;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(92,16,32,.2);
+  transition: transform var(--transition);
+}
+.combos__card:hover .combos__badge {
+  transform: scale(1.04);
+}
+
+/* ── Body ── */
+.combos__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1.5rem 1.5rem 0;
+  flex: 1;
+}
+
+.combos__tagline {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  padding-right: 4rem;
+  transition: color var(--transition-slow);
+}
+
+.combos__card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+.combos__card:hover .combos__card-title { color: var(--color-primary); }
+
+.combos__card-desc {
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  transition: color var(--transition-slow);
+}
+
+/* ── Lista de incluidos ── */
+.combos__includes {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .85rem 0 0;
+  border-top: 1px solid var(--color-border-light);
+  margin-top: .25rem;
+  transition: border-color var(--transition-slow);
+}
+
+.combos__include-item {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  font-size: .83rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  transition: color var(--transition-slow);
+}
+
+.combos__include-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  flex-shrink: 0;
+  opacity: .75;
+  transition: transform .3s var(--ease-spring), opacity var(--transition);
+}
+.combos__card:hover .combos__include-dot {
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+/* ── Footer / CTA ── */
+.combos__card-footer {
+  padding: 1rem 1.5rem 1.4rem;
+}
+
+.combos__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: gap var(--transition), color var(--transition);
+}
+.combos__cta-arrow {
+  font-style: normal;
+  display: inline-block;
+  transition: transform var(--transition);
+}
+.combos__cta:hover { color: var(--color-gold); gap: .75rem; }
+.combos__cta:hover .combos__cta-arrow { transform: translateX(5px); }
+
+/* ── Nota al pie ── */
+.combos__note {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: .8rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  font-style: italic;
+  letter-spacing: .02em;
+  transition: color var(--transition-slow);
+}
+
+/* ── Mobile ── */
+@media (max-width: 659px) {
+  .combos__grid { grid-template-columns: 1fr; }
+  .combos__card { max-width: 100%; }
+  .combos__intro { font-size: .9rem; }
+}
