@@ -1,4 +1,4 @@
-# Oriente Landing — Frontend
+# Oriente Landing -- Frontend
 
 Este repositorio contiene el frontend de la landing page y panel de administración para Oriente, un consultorio especializado en kinesiología y estética personal.
 
