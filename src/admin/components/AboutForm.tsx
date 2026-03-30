@@ -33,11 +33,10 @@ export function AboutForm({ initial, onSave, loading }: Props) {
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
 
-      {/* Preview imagen */}
       <div className="admin-form__image-preview">
         {form.imageUrl ? (
           <img src={form.imageUrl} alt="Preview" className="admin-form__image-thumb"
-            onError={e => (e.currentTarget.style.display = 'none')} />
+            onError={(e: React.SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.display = 'none')} />
         ) : (
           <div className="admin-form__image-empty">Sin imagen — se muestra el placeholder</div>
         )}
@@ -48,7 +47,7 @@ export function AboutForm({ initial, onSave, loading }: Props) {
         hint="Medida ideal: 560×640px"
         inputProps={{
           id: 'about-image', value: form.imageUrl,
-          onChange: e => set('imageUrl', e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('imageUrl', e.target.value),
           placeholder: '/foto-equipo.jpg  o  https://...',
         }}
       />
@@ -57,7 +56,8 @@ export function AboutForm({ initial, onSave, loading }: Props) {
         label="Título de sección"
         inputProps={{
           id: 'about-heading', value: form.heading,
-          onChange: e => set('heading', e.target.value), required: true,
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('heading', e.target.value),
+          required: true,
         }}
       />
 
@@ -66,33 +66,33 @@ export function AboutForm({ initial, onSave, loading }: Props) {
         label="Texto principal"
         inputProps={{
           id: 'about-body', value: form.body, rows: 5,
-          onChange: e => set('body', e.target.value), required: true,
+          onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => set('body', e.target.value),
+          required: true,
         }}
       />
 
-      {/* Estadísticas */}
       <fieldset className="admin-form__fieldset">
         <legend className="admin-form__legend">Estadísticas</legend>
 
         <div className="admin-form__stat-row">
           <FormField label="Valor 1" hint="ej: 7"
-            inputProps={{ id: 's1v', value: form.stat1Value, onChange: e => set('stat1Value', e.target.value) }} />
+            inputProps={{ id: 's1v', value: form.stat1Value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat1Value', e.target.value) }} />
           <FormField label="Etiqueta 1" hint="ej: Especialidades"
-            inputProps={{ id: 's1l', value: form.stat1Label, onChange: e => set('stat1Label', e.target.value) }} />
+            inputProps={{ id: 's1l', value: form.stat1Label, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat1Label', e.target.value) }} />
         </div>
 
         <div className="admin-form__stat-row">
           <FormField label="Valor 2" hint="ej: +500"
-            inputProps={{ id: 's2v', value: form.stat2Value, onChange: e => set('stat2Value', e.target.value) }} />
+            inputProps={{ id: 's2v', value: form.stat2Value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat2Value', e.target.value) }} />
           <FormField label="Etiqueta 2" hint="ej: Pacientes atendidos"
-            inputProps={{ id: 's2l', value: form.stat2Label, onChange: e => set('stat2Label', e.target.value) }} />
+            inputProps={{ id: 's2l', value: form.stat2Label, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat2Label', e.target.value) }} />
         </div>
 
         <div className="admin-form__stat-row">
           <FormField label="Valor 3" hint="ej: 100%"
-            inputProps={{ id: 's3v', value: form.stat3Value, onChange: e => set('stat3Value', e.target.value) }} />
+            inputProps={{ id: 's3v', value: form.stat3Value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat3Value', e.target.value) }} />
           <FormField label="Etiqueta 3" hint="ej: Atención personalizada"
-            inputProps={{ id: 's3l', value: form.stat3Label, onChange: e => set('stat3Label', e.target.value) }} />
+            inputProps={{ id: 's3l', value: form.stat3Label, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat3Label', e.target.value) }} />
         </div>
       </fieldset>
 

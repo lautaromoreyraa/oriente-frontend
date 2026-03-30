@@ -13,7 +13,6 @@ export function HomeForm({ initial, onSave, loading }: Props) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Enviar todos los campos existentes, solo cambia backgroundImageUrl
     await onSave({
       title:              initial.title,
       subtitle:           initial.subtitle,
@@ -33,7 +32,7 @@ export function HomeForm({ initial, onSave, loading }: Props) {
             src={imageUrl}
             alt="Preview"
             className="admin-form__image-thumb"
-            onError={e => (e.currentTarget.style.display = 'none')}
+            onError={(e: React.SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.display = 'none')}
           />
         ) : (
           <div className="admin-form__image-empty">
@@ -48,7 +47,7 @@ export function HomeForm({ initial, onSave, loading }: Props) {
         inputProps={{
           id: 'home-image',
           value: imageUrl,
-          onChange: e => setImageUrl(e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => setImageUrl(e.target.value),
           placeholder: '/foto-consultorio.jpg  o  https://...',
         }}
       />

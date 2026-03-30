@@ -61,7 +61,7 @@ export function ServiceForm({ initial, onSave, onCancel, loading }: Props) {
         inputProps={{
           id: 'service-title',
           value: form.title,
-          onChange: e => handleTitleChange(e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleTitleChange(e.target.value),
           required: true,
           placeholder: 'ej: Kinesiología',
         }}
@@ -74,7 +74,7 @@ export function ServiceForm({ initial, onSave, onCancel, loading }: Props) {
           id: 'service-description',
           value: form.description,
           rows: 3,
-          onChange: e => set('description', e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => set('description', e.target.value),
           required: true,
         }}
       />
@@ -88,7 +88,7 @@ export function ServiceForm({ initial, onSave, onCancel, loading }: Props) {
             id="service-category"
             className="form-field__input"
             value={form.category}
-            onChange={e => set('category', e.target.value as ServiceFormData['category'])}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => set('category', e.target.value as ServiceFormData['category'])}
           >
             <option value="KINE">Kinesiología</option>
             <option value="ESTETICA">Estética</option>
@@ -103,7 +103,7 @@ export function ServiceForm({ initial, onSave, onCancel, loading }: Props) {
             type: 'number',
             value: form.displayOrder,
             min: 0,
-            onChange: e => set('displayOrder', Number(e.target.value)),
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('displayOrder', Number(e.target.value)),
           }}
         />
       </div>

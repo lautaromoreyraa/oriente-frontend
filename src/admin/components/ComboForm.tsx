@@ -53,7 +53,6 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
 
   function handleTitleChange(value: string) {
     set('title', value);
-    // Solo regenerar slug al crear — en edición conservar el slug original
     if (!initial) set('slug', toSlug(value));
   }
 
@@ -100,7 +99,7 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
         inputProps={{
           id: 'combo-title',
           value: form.title,
-          onChange: e => handleTitleChange(e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleTitleChange(e.target.value),
           required: true,
           placeholder: 'ej: Restauración Profunda',
         }}
@@ -112,7 +111,7 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
         inputProps={{
           id: 'combo-tagline',
           value: form.tagline,
-          onChange: e => set('tagline', e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('tagline', e.target.value),
           required: true,
         }}
       />
@@ -124,7 +123,7 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
           id: 'combo-description',
           value: form.description,
           rows: 3,
-          onChange: e => set('description', e.target.value),
+          onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => set('description', e.target.value),
           required: true,
         }}
       />
@@ -136,7 +135,7 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
             <input
               className="form-field__input"
               value={item.description}
-              onChange={e => setItem(i, e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setItem(i, e.target.value)}
               placeholder={`Item ${i + 1}`}
             />
             {form.items.length > 1 && (
@@ -163,7 +162,7 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
           inputProps={{
             id: 'combo-badge',
             value: form.badge ?? '',
-            onChange: e => set('badge', e.target.value),
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('badge', e.target.value),
           }}
         />
         <FormField
@@ -173,7 +172,7 @@ export function ComboForm({ initial, onSave, onCancel, loading }: Props) {
             type: 'number',
             value: form.displayOrder,
             min: 0,
-            onChange: e => set('displayOrder', Number(e.target.value)),
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('displayOrder', Number(e.target.value)),
           }}
         />
       </div>
