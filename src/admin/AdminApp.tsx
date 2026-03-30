@@ -5,7 +5,7 @@ import { HomePage }     from './pages/HomePage';
 import { AboutPage }    from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { CombosPage }   from './pages/CombosPage';
-import { authService }  from '../services/authService';
+import { authService }  from '../services/AuthService';
 import type { AdminPage } from '../types/admin';
 import './AdminApp.css';
 
