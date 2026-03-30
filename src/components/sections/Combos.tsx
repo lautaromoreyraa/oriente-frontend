@@ -43,11 +43,21 @@ export function Combos() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
     );
 
     els.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
+
+    // Fallback: forzar visible si el observer no dispara
+    const fallback = setTimeout(() => {
+      root.querySelectorAll<HTMLElement>('.reveal:not(.visible)')
+        .forEach(el => el.classList.add('visible'));
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
   }, [combos]);
 
   const sorted = [...combos].sort((a, b) => a.displayOrder - b.displayOrder);
