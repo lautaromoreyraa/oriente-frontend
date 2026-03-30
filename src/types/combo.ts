@@ -1,4 +1,3 @@
-// Refleja exactamente la respuesta de GET /api/v1/combos
 export interface ComboItem {
   id:           number;
   description:  string;
@@ -17,8 +16,8 @@ export interface Combo {
   items:        ComboItem[];
 }
 
-// Para crear/editar — lo que se envía al backend
 export interface ComboFormData {
+  slug:         string;
   title:        string;
   tagline:      string;
   description:  string;
