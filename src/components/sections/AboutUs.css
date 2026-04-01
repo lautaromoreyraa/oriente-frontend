@@ -141,3 +141,25 @@
 @media (max-width: 480px) {
   .about__stat-number { font-size: 2rem; }
 }
+
+/* ── Diferenciales dentro de Nosotros — banda full-width con fondo propio ── */
+
+/* Quitar el padding-bottom de la sección para que el bloque llegue al borde */
+.about {
+  padding-bottom: 0;
+}
+
+.about__differentials {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border-light);
+  margin-top: 5.5rem;
+  padding: 5.5rem 0;
+}
+
+.about__diff-header {
+  margin-bottom: 0;
+}
+
+@media (max-width: 899px) {
+  .about__differentials { margin-top: 3rem; padding: 3rem 0; }
+}

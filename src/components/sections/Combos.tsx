@@ -63,7 +63,7 @@ export function Combos() {
   const sorted = [...combos].sort((a, b) => a.displayOrder - b.displayOrder);
 
   return (
-    <section id="combos" className="section section--alt combos" ref={sectionRef}>
+    <section id="combos" className="section combos" ref={sectionRef}>
       <div className="container">
 
         <header className="section-header reveal">

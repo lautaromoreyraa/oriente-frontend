@@ -16,6 +16,15 @@ export interface AboutContent {
   stat2Label?: string;
   stat3Value?: string;
   stat3Label?: string;
+  // Diferenciales
+  diff1Title?: string;
+  diff1Desc?:  string;
+  diff2Title?: string;
+  diff2Desc?:  string;
+  diff3Title?: string;
+  diff3Desc?:  string;
+  diff4Title?: string;
+  diff4Desc?:  string;
 }
 
 export interface AboutFormData {
@@ -29,4 +38,13 @@ export interface AboutFormData {
   stat2Label?: string;
   stat3Value?: string;
   stat3Label?: string;
+  // Diferenciales
+  diff1Title?: string;
+  diff1Desc?:  string;
+  diff2Title?: string;
+  diff2Desc?:  string;
+  diff3Title?: string;
+  diff3Desc?:  string;
+  diff4Title?: string;
+  diff4Desc?:  string;
 }

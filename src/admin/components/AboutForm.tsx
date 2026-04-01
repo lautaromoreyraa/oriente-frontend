@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FormField } from './FormField';
+import { DIFFERENTIALS } from '../../constants/data';
 import type { AboutContent, AboutFormData } from '../../types/about';
 
 interface Props {
@@ -19,6 +20,14 @@ export function AboutForm({ initial, onSave, loading }: Props) {
     stat2Label: initial.stat2Label ?? 'Pacientes atendidos',
     stat3Value: initial.stat3Value ?? '100%',
     stat3Label: initial.stat3Label ?? 'Atención personalizada',
+    diff1Title: initial.diff1Title ?? DIFFERENTIALS[0]?.title ?? '',
+    diff1Desc:  initial.diff1Desc  ?? DIFFERENTIALS[0]?.description ?? '',
+    diff2Title: initial.diff2Title ?? DIFFERENTIALS[1]?.title ?? '',
+    diff2Desc:  initial.diff2Desc  ?? DIFFERENTIALS[1]?.description ?? '',
+    diff3Title: initial.diff3Title ?? DIFFERENTIALS[2]?.title ?? '',
+    diff3Desc:  initial.diff3Desc  ?? DIFFERENTIALS[2]?.description ?? '',
+    diff4Title: initial.diff4Title ?? DIFFERENTIALS[3]?.title ?? '',
+    diff4Desc:  initial.diff4Desc  ?? DIFFERENTIALS[3]?.description ?? '',
   });
 
   function set(field: keyof typeof form, value: string) {
@@ -29,6 +38,13 @@ export function AboutForm({ initial, onSave, loading }: Props) {
     e.preventDefault();
     await onSave({ ...form, imageUrl: form.imageUrl.trim() || undefined, active: initial.active });
   }
+
+  const diffFields = [
+    { n: 1, titleKey: 'diff1Title', descKey: 'diff1Desc' },
+    { n: 2, titleKey: 'diff2Title', descKey: 'diff2Desc' },
+    { n: 3, titleKey: 'diff3Title', descKey: 'diff3Desc' },
+    { n: 4, titleKey: 'diff4Title', descKey: 'diff4Desc' },
+  ] as const;
 
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
@@ -94,6 +110,33 @@ export function AboutForm({ initial, onSave, loading }: Props) {
           <FormField label="Etiqueta 3" hint="ej: Atención personalizada"
             inputProps={{ id: 's3l', value: form.stat3Label, onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('stat3Label', e.target.value) }} />
         </div>
+      </fieldset>
+
+      <fieldset className="admin-form__fieldset">
+        <legend className="admin-form__legend">Diferenciales</legend>
+
+        {diffFields.map(({ n, titleKey, descKey }) => (
+          <div key={n} className="admin-form__diff-group">
+            <p className="admin-form__diff-label">Diferencial {n}</p>
+            <FormField
+              label="Título"
+              inputProps={{
+                id: `${titleKey}`, value: form[titleKey],
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => set(titleKey, e.target.value),
+                placeholder: `Título del diferencial ${n}`,
+              }}
+            />
+            <FormField
+              as="textarea"
+              label="Descripción"
+              inputProps={{
+                id: `${descKey}`, value: form[descKey], rows: 2,
+                onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => set(descKey, e.target.value),
+                placeholder: `Descripción del diferencial ${n}`,
+              }}
+            />
+          </div>
+        ))}
       </fieldset>
 
       <div className="admin-form__footer">

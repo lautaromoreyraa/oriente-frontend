@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useReveal }    from '../../hooks/useReveal';
 import { aboutService } from '../../services/aboutService';
+import { DIFFERENTIALS } from '../../constants/data';
 import type { AboutContent } from '../../types/about';
 import './AboutUs.css';
+import './Differentials.css';
 
 const FALLBACK: AboutContent = {
   id:         0,
@@ -30,6 +32,13 @@ export function AboutUs() {
   const s2l = content.stat2Label || 'Pacientes atendidos';
   const s3v = content.stat3Value || '100%';
   const s3l = content.stat3Label || 'Atención personalizada';
+
+  const diffs = [
+    { title: content.diff1Title || DIFFERENTIALS[0]?.title, description: content.diff1Desc || DIFFERENTIALS[0]?.description },
+    { title: content.diff2Title || DIFFERENTIALS[1]?.title, description: content.diff2Desc || DIFFERENTIALS[1]?.description },
+    { title: content.diff3Title || DIFFERENTIALS[2]?.title, description: content.diff3Desc || DIFFERENTIALS[2]?.description },
+    { title: content.diff4Title || DIFFERENTIALS[3]?.title, description: content.diff4Desc || DIFFERENTIALS[3]?.description },
+  ].filter(d => d.title);
 
   return (
     <section id="nosotros" className="section section--alt about" ref={ref}>
@@ -76,6 +85,32 @@ export function AboutUs() {
 
         </div>
       </div>
+
+      {diffs.length > 0 && (
+        <div className="about__differentials">
+          <div className="container">
+            <header className="section-header reveal about__diff-header">
+              <p className="section-label">Por qué elegirnos</p>
+              <h2 className="section-title">Nuestros <span>diferenciales</span></h2>
+              <div className="section-divider" />
+            </header>
+
+            <ul className="differentials__list" role="list">
+              {diffs.map((item, i) => (
+                <li key={i} className={`differentials__item reveal reveal-delay-${i + 1}`}>
+                  <div className="differentials__number" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div className="differentials__content">
+                    <h3 className="differentials__title">{item.title}</h3>
+                    <p className="differentials__desc">{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

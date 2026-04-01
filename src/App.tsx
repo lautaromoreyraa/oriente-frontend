@@ -6,7 +6,6 @@ import { Hero }          from './components/sections/Hero';
 import { AboutUs }       from './components/sections/AboutUs';
 import { Services }      from './components/sections/Services';
 import { Combos }        from './components/sections/Combos';
-import { Differentials } from './components/sections/Differentials';
 import { Location }      from './components/sections/Location';
 
 function App() {
@@ -16,10 +15,9 @@ function App() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <AboutUs />
         <Services />
         <Combos />
-        <Differentials />
+        <AboutUs />
         <Location />
       </main>
       <Footer />

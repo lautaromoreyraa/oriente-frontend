@@ -16,9 +16,9 @@ export const CONTACT = {
 // ─── Navegación ──────────────────────────────────────────
 export const NAV_LINKS = [
   { label: 'Inicio',    href: '#inicio'    },
-  { label: 'Nosotros',  href: '#nosotros'  },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Combos',    href: '#combos'    },
+  { label: 'Nosotros',  href: '#nosotros'  },
   { label: 'Contacto',  href: '#contacto'  },
 ];
 

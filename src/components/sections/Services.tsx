@@ -88,7 +88,7 @@ export function Services() {
   const estetica = sorted.filter(s => s.category === 'ESTETICA');
 
   return (
-    <section id="servicios" className="section services" ref={sectionRef}>
+    <section id="servicios" className="section section--alt services" ref={sectionRef}>
       <div className="container">
 
         <header className="section-header reveal">

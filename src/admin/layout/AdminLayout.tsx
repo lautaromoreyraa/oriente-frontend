@@ -3,9 +3,9 @@ import './AdminLayout.css';
 
 const NAV_ITEMS: NavItem[] = [
   { page: 'home',     label: 'Inicio',    icon: '🏠' },
-  { page: 'about',    label: 'Nosotros',  icon: '👥' },
   { page: 'services', label: 'Servicios', icon: '✦'  },
   { page: 'combos',   label: 'Combos',    icon: '🎁'  },
+  { page: 'about',    label: 'Nosotros',  icon: '👥' },
 ];
 
 interface Props {

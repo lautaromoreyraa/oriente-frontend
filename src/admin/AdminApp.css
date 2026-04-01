@@ -686,3 +686,26 @@ select.form-field__input {
   color: var(--admin-text-muted);
   font-weight: 300;
 }
+
+/* ── Grupos de diferenciales en AboutForm ── */
+.admin-form__diff-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-form__diff-group:first-of-type {
+  padding-top: 0;
+  border-top: none;
+}
+
+.admin-form__diff-label {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--admin-primary);
+  margin-bottom: .1rem;
+}
