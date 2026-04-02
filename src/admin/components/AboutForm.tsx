@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FormField } from './FormField';
+import { ImageUpload } from './ImageUpload';
 import { DIFFERENTIALS } from '../../constants/data';
 import type { AboutContent, AboutFormData } from '../../types/about';
 
@@ -49,23 +50,11 @@ export function AboutForm({ initial, onSave, loading }: Props) {
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
 
-      <div className="admin-form__image-preview">
-        {form.imageUrl ? (
-          <img src={form.imageUrl} alt="Preview" className="admin-form__image-thumb"
-            onError={(e: React.SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.display = 'none')} />
-        ) : (
-          <div className="admin-form__image-empty">Sin imagen — se muestra el placeholder</div>
-        )}
-      </div>
-
-      <FormField
-        label="URL de la foto (izquierda de Nosotros)"
-        hint="Medida ideal: 560×640px"
-        inputProps={{
-          id: 'about-image', value: form.imageUrl,
-          onChange: (e: React.ChangeEvent<HTMLInputElement>) => set('imageUrl', e.target.value),
-          placeholder: '/foto-equipo.jpg  o  https://...',
-        }}
+      <ImageUpload
+        label="Foto de la sección Nosotros (izquierda)"
+        hint="Medida ideal: 560×640 px"
+        value={form.imageUrl}
+        onChange={(url) => set('imageUrl', url)}
       />
 
       <FormField

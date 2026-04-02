@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormField } from './FormField';
+import { ImageUpload } from './ImageUpload';
 import type { HomeContent, HomeFormData } from '../../types/home';
 
 interface Props {
@@ -18,7 +18,7 @@ export function HomeForm({ initial, onSave, loading }: Props) {
       subtitle:           initial.subtitle,
       ctaText:            initial.ctaText,
       ctaUrl:             initial.ctaUrl,
-      backgroundImageUrl: imageUrl.trim() || undefined,
+      backgroundImageUrl: imageUrl || undefined,
       active:             initial.active,
     });
   }
@@ -26,30 +26,11 @@ export function HomeForm({ initial, onSave, loading }: Props) {
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
 
-      <div className="admin-form__image-preview">
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt="Preview"
-            className="admin-form__image-thumb"
-            onError={(e: React.SyntheticEvent<HTMLImageElement>) => (e.currentTarget.style.display = 'none')}
-          />
-        ) : (
-          <div className="admin-form__image-empty">
-            Sin imagen — se muestra el placeholder
-          </div>
-        )}
-      </div>
-
-      <FormField
-        label="URL de la foto (derecha del hero)"
-        hint="Medida ideal: 600×700px · Podés usar /nombre-foto.jpg si la subís a public/"
-        inputProps={{
-          id: 'home-image',
-          value: imageUrl,
-          onChange: (e: React.ChangeEvent<HTMLInputElement>) => setImageUrl(e.target.value),
-          placeholder: '/foto-consultorio.jpg  o  https://...',
-        }}
+      <ImageUpload
+        label="Foto del hero (derecha)"
+        hint="Medida ideal: 600×700 px"
+        value={imageUrl}
+        onChange={setImageUrl}
       />
 
       <div className="admin-form__footer">
